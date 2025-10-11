@@ -1,8 +1,6 @@
 "use client"
-import Image from "next/image";
 import "@/app/globals.css";
 import { useRef, useState } from "react";
-import { audio } from "framer-motion/client";
 
 export default function Home() {
 
