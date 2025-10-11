@@ -117,8 +117,8 @@ useEffect(() => {
 
       const messages = [
         "PSST... CLICK YES ALREADY!",
-        "I'M WATCHING YOU 👀",
-        "DON'T BE SHY!",
+        "I AM WATCHING YOU 👀",
+        "DO NOT BE SHY!",
         "YOU KNOW YOU WANT TO!",
         "HEHE NICE TRY!",
         "FOUND A SECRET! NOW SAY YES!",
@@ -142,8 +142,8 @@ useEffect(() => {
     "THINK AGAIN!",
     "PLEASE?",
     "PRETTY PLEASE?",
-    "I'LL BE SAD 😢",
-    "DON'T DO THIS!",
+    "I WILL BE SAD 😢",
+    "DO NOT DO THIS!",
     "LAST CHANCE!",
     "FINAL FINAL!",
   ];
@@ -277,8 +277,8 @@ useEffect(() => {
     }
 
     const compliments = [
-      "YAY! YOU'RE AMAZING! 💕",
-      "I KNEW YOU'D SAY YES! 🌟",
+      "YAY! YOU ARE AMAZING! 💕",
+      "I KNEW YOU   WOULD SAY YES! 🌟",
       "BEST DECISION EVER! 💖",
       "YOU MAKE ME SO HAPPY! 🥰",
       "MY HEART IS SINGING! 🎶",
@@ -333,7 +333,7 @@ useEffect(() => {
 
   // FIXED: Get current button text based on state and count
   const getNoButtonText = () => {
-    if (appState === "ultimatum") return "I'M SORRY!";
+    if (appState === "ultimatum") return "I AM SORRY!";
     if (appState === "celebrating") return "CHANGED MIND?";
 
     // FIXED: Use count to get the correct text from array
@@ -451,7 +451,7 @@ useEffect(() => {
           {appState === "ultimatum" && (
             <div className="mt-2 lg:mt-4 p-2 lg:p-3 bg-red-100 border border-red-300 rounded-lg max-w-md text-xs lg:text-sm">
               <p className="text-red-700 font-semibold">
-                ⚠️ You already said YES! Don't break my heart! 💔
+                ⚠️ You already said YES! Do not break my heart! 💔
               </p>
             </div>
           )}
