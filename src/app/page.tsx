@@ -8,7 +8,7 @@ export default function Home() {
 
   const [mainImageSrc, setMainImageSrc]=useState("image/val1.gif");
   const [innerText, setInnerText]=useState("WILL YOU BE MY VALENTINE ??")
-  let [count, setCount]=useState(1);
+  const [count, setCount]=useState(1);
   const audioRef=useRef<HTMLAudioElement>(null)
   const audioRef2=useRef<HTMLAudioElement>(null)
 
