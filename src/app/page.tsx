@@ -1,103 +1,83 @@
+"use client"
 import Image from "next/image";
+import "@/app/globals.css";
+import { useRef, useState } from "react";
+import { audio } from "framer-motion/client";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const [mainImageSrc, setMainImageSrc]=useState("image/val1.gif");
+  const [innerText, setInnerText]=useState("WILL YOU BE MY VALENTINE ??")
+  let [count, setCount]=useState(1);
+  const audioRef=useRef<HTMLAudioElement>(null)
+  const audioRef2=useRef<HTMLAudioElement>(null)
+
+  const handleNoChange = (event: React.MouseEvent<HTMLButtonElement>) => {
+  if(count>3){
+  const button = event.currentTarget;
+  button.style.position = "absolute";
+  button.style.left = `${Math.random() * 85}vw`;
+  button.style.top = `${Math.random() * 90}vh`;
+  if (audioRef.current) {
+  audioRef.current.play();
+}}};
+  
+  const handleNoClick=(event: React.MouseEvent<HTMLButtonElement>)=>{
+    if(count<3){
+    setCount(count+1);
+    setMainImageSrc(`image/val${count+1}.gif`);
+    if (audioRef.current) {
+    audioRef.current.play();
+      }
+    if(count===1){
+      setInnerText("MANA MAT KARO YAAR -_-_-_-_-")
+    }
+    if(count===2){
+      setInnerText("PLEASE PLEASE PLEASE :(.....")
+    }
+    }
+    else if(count===3){
+    setCount(count+1);
+    const button = event.currentTarget;
+    button.style.position = "absolute";
+    button.style.left = `${Math.random() * 85}vw`;
+    button.style.top = `${Math.random() * 90}vh`;
+    if (audioRef.current) {
+    audioRef.current.play();
+    }
+    setInnerText("LAST CHANCE HAIN CUTIE")
+    }};
+
+  const handleYesClick=()=>{
+    setMainImageSrc("image/fimal.gif")
+    if (audioRef2.current) {
+      audioRef2.current.play();
+    }
+    setInnerText("I KNEW IT CUTIE I<3U <3 <3< 3");
+  }
+
+  return (
+    <div style={{height:"100vh", width:"100vw", alignItems:"center"}} className="Body, bg-amber-200 flex justify-center ">
+      <audio ref={audioRef} src="audios/meow2.mp3" ></audio>
+      <audio ref={audioRef2} src="audios/done.mp3" loop></audio>
+        <img src="image/12.jpg" className="h-[125px] rounded-xl absolute translate-x-[500px] translate-y-[200px]" />
+        <img src="image/23.jpg" className="h-[125px] rounded-xl absolute translate-x-[400px]" />
+        <img src="image/34.jpg" className="h-[125px] rounded-xl absolute -translate-x-[500px]" />
+        <img src="image/45.jpg" className="h-[125px] rounded-xl absolute -translate-x-[600px] translate-y-[170px]" />
+        <img src="image/56.jpg" className="h-[125px] rounded-xl absolute -translate-x-[600px] -translate-y-[170px]" />
+        <img src="image/67.jpg" className="h-[125px] rounded-xl absolute -translate-x-[450px] -translate-y-[250px]" />
+        <img src="image/78.jpg" className="h-[125px] rounded-xl absolute translate-x-[500px] -translate-y-[200px]" />
+        <div className="Body bg-pink-300 h-[80vh] w-[40vw] rounded-[20px] flex justify-center items-center">
+            <div className="setMainImageSrc"><img src={mainImageSrc} alt="image" className="h-[60vh] w-[30vw] rounded-[20px]" />
+                <h3 className="text-black text-3xl font-semibold mask-linear-from-neutral-100">{innerText}</h3>
+                <div className="flex justify-evenly items-center h-[40px]">
+                  <div className="rotating-gradient Body bg-gradient-to-r from-purple-500 via-sky-400 to-emerald-400 h-[48px] w-[208px] flex justify-center items-center rounded-[5px]  hover:cursor-pointer hover:duration-100 hover:scale-110 active:scale-200"><button className="Body bg-rose-500 rounded-[5px] h-[40px] w-[200px] text-3xl hover:cursor-pointer hover:duration-100 transition-all " onClick={handleYesClick}>YES</button></div>
+                    
+                    <button className="Body bg-rose-500 rounded-[5px] h-[40px] w-[200px] text-[10px] hover:cursor-pointer hover:scale-90 transition-all hover:duration-75 active:scale-75" onMouseEnter={handleNoChange} onClick={handleNoClick}>NO</button>
+                </div>
+            </div>
+          </div>
+    
     </div>
   );
 }

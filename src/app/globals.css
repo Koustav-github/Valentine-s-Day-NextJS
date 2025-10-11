@@ -24,3 +24,33 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.rotating-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.rotating-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, #531ef1, #1fa9e4, #17f1a1);
+  background-size: 200% 200%;
+  animation: rotate-gradient 2s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Make sure the button is above the gradient */
+.rotating-gradient > button {
+  position: relative;
+  z-index: 1;
+}
