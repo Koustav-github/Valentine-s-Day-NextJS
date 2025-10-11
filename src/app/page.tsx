@@ -7,11 +7,12 @@ export default function Home() {
   const [mainImageSrc, setMainImageSrc]=useState("image/val1.gif");
   const [innerText, setInnerText]=useState("WILL YOU BE MY VALENTINE ??")
   const [count, setCount]=useState(1);
+  const [flag, setFlag]=useState(false);
   const audioRef=useRef<HTMLAudioElement>(null)
   const audioRef2=useRef<HTMLAudioElement>(null)
 
   const handleNoChange = (event: React.MouseEvent<HTMLButtonElement>) => {
-  if(count>3){
+  if(count>3&&flag===false){
   const button = event.currentTarget;
   button.style.position = "absolute";
   button.style.left = `${Math.random() * 85}vw`;
@@ -21,7 +22,7 @@ export default function Home() {
 }}};
   
   const handleNoClick=(event: React.MouseEvent<HTMLButtonElement>)=>{
-    if(count<3){
+    if(count<3&&flag===false){
     setCount(count+1);
     setMainImageSrc(`image/val${count+1}.gif`);
     if (audioRef.current) {
@@ -34,7 +35,7 @@ export default function Home() {
       setInnerText("PLEASE PLEASE PLEASE :(.....")
     }
     }
-    else if(count===3){
+    else if(count===3&&flag===false){
     setCount(count+1);
     const button = event.currentTarget;
     button.style.position = "absolute";
@@ -46,7 +47,7 @@ export default function Home() {
     setInnerText("LAST CHANCE HAIN CUTIE")
     }
 
-    if(count>3){
+    if(count>3&&flag===false){
     const button = event.currentTarget;
     button.style.position = "absolute";
     button.style.left = `${Math.random() * 85}vw`;
@@ -62,7 +63,9 @@ export default function Home() {
       audioRef2.current.play();
     }
     setInnerText("I KNEW IT CUTIE I<3U <3 <3< 3");
+    setFlag(true);
   }
+
 
   return (
     <div style={{height:"100vh", width:"100vw", alignItems:"center"}} className="Body, bg-amber-200 flex justify-center">
