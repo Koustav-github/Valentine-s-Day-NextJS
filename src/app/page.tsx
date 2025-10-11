@@ -115,8 +115,8 @@ export default function Home() {
 
       const messages = [
         "PSST... CLICK YES ALREADY!",
-        "I'M WATCHING YOU 👀",
-        "DON'T BE SHY!",
+        "I&apos;M WATCHING YOU 👀",
+        "DON&apos;T BE SHY!",
         "YOU KNOW YOU WANT TO!",
         "HEHE NICE TRY!",
         "FOUND A SECRET! NOW SAY YES!",
@@ -140,8 +140,8 @@ export default function Home() {
     "THINK AGAIN!",
     "PLEASE?",
     "PRETTY PLEASE?",
-    "I'LL BE SAD 😢",
-    "DON'T DO THIS!",
+    "I&apos;LL BE SAD 😢",
+    "DON&apos;T DO THIS!",
     "LAST CHANCE!",
     "FINAL FINAL!",
   ];
@@ -275,8 +275,8 @@ export default function Home() {
     }
 
     const compliments = [
-      "YAY! YOU'RE AMAZING! 💕",
-      "I KNEW YOU'D SAY YES! 🌟",
+      "YAY! YOU&apos;RE AMAZING! 💕",
+      "I KNEW YOU&apos;D SAY YES! 🌟",
       "BEST DECISION EVER! 💖",
       "YOU MAKE ME SO HAPPY! 🥰",
       "MY HEART IS SINGING! 🎶",
@@ -331,7 +331,7 @@ export default function Home() {
 
   // FIXED: Get current button text based on state and count
   const getNoButtonText = () => {
-    if (appState === "ultimatum") return "I'M SORRY!";
+    if (appState === "ultimatum") return "I&apos;M SORRY!";
     if (appState === "celebrating") return "CHANGED MIND?";
 
     // FIXED: Use count to get the correct text from array
@@ -449,7 +449,7 @@ export default function Home() {
           {appState === "ultimatum" && (
             <div className="mt-2 lg:mt-4 p-2 lg:p-3 bg-red-100 border border-red-300 rounded-lg max-w-md text-xs lg:text-sm">
               <p className="text-red-700 font-semibold">
-                ⚠️ You already said YES! Don't break my heart! 💔
+                ⚠️ You already said YES! Don&apos;t break my heart! 💔
               </p>
             </div>
           )}
