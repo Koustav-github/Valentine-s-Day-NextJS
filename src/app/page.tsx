@@ -53,26 +53,28 @@ export default function Home() {
   }, []);
 
   // Easter Egg Keyboard Shortcuts
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (appState === "celebrating" || appState === "ultimatum") return;
+  // Easter Egg Keyboard Shortcuts
+useEffect(() => {
+  const handleKeyPress = (e: KeyboardEvent) => {
+    // Only allow Y key in initial or persuading states
+    if (appState === "celebrating" || appState === "ultimatum") return;
 
-      if (e.key === "h" || e.key === "H") {
-        setInnerText("HEHEHEHEHEHEHEHEHEHEHEHE");
-        setTimeout(() => setInnerText("WILL YOU BE MY VALENTINE ??"), 2000);
-      }
-      if (e.key === "l" || e.key === "L") {
-        setInnerText("I LOVE YOU SO MUCH CUTIE PIE! 💖");
-        setTimeout(() => setInnerText("WILL YOU BE MY VALENTINE ??"), 3000);
-      }
-      if ((e.key === "y" || e.key === "Y") && appState !== "celebrating") {
-        handleYesClick();
-      }
-    };
+    if (e.key === "h" || e.key === "H") {
+      setInnerText("HEHEHEHEHEHEHEHEHEHEHEHE");
+      setTimeout(() => setInnerText("WILL YOU BE MY VALENTINE ??"), 2000);
+    }
+    if (e.key === "l" || e.key === "L") {
+      setInnerText("I LOVE YOU SO MUCH CUTIE PIE! 💖");
+      setTimeout(() => setInnerText("WILL YOU BE MY VALENTINE ??"), 3000);
+    }
+    if (e.key === "y" || e.key === "Y") {
+      handleYesClick();
+    }
+  };
 
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [appState]);
+  window.addEventListener("keydown", handleKeyPress);
+  return () => window.removeEventListener("keydown", handleKeyPress);
+}, [appState, setAppState]);
 
   // Playful Text Animations
   useEffect(() => {
