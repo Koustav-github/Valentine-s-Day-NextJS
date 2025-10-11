@@ -44,7 +44,17 @@ export default function Home() {
     audioRef.current.play();
     }
     setInnerText("LAST CHANCE HAIN CUTIE")
-    }};
+    }
+
+    if(count>3){
+    const button = event.currentTarget;
+    button.style.position = "absolute";
+    button.style.left = `${Math.random() * 85}vw`;
+    button.style.top = `${Math.random() * 90}vh`;
+    if (audioRef.current) {
+    audioRef.current.play();
+}}
+  };
 
   const handleYesClick=()=>{
     setMainImageSrc("image/fimal.gif")
