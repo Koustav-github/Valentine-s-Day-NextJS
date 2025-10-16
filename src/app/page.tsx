@@ -136,16 +136,7 @@ useEffect(() => {
   );
 
   const noButtonTexts = [
-    "NO",
-    "ARE YOU SURE?",
-    "REALLY?",
-    "THINK AGAIN!",
-    "PLEASE?",
-    "PRETTY PLEASE?",
-    "I WILL BE SAD 😢",
-    "DO NOT DO THIS!",
-    "LAST CHANCE!",
-    "FINAL FINAL!",
+    "NO"
   ];
 
   // FIXED: No button movement on hover
@@ -276,29 +267,7 @@ useEffect(() => {
       audioRef2.current.play().catch(() => {});
     }
 
-    const compliments = [
-      "YAY! YOU ARE AMAZING! 💕",
-      "I KNEW YOU   WOULD SAY YES! 🌟",
-      "BEST DECISION EVER! 💖",
-      "YOU MAKE ME SO HAPPY! 🥰",
-      "MY HEART IS SINGING! 🎶",
-      "I KNEW IT CUTIE I<3U <3 <3< 3",
-    ];
-
-    setInnerText(compliments[complimentCount % compliments.length]);
-    setComplimentCount((prev) => prev + 1);
-
-    // Rotate compliments every 3 seconds
-    const interval = setInterval(() => {
-      setComplimentCount((prev) => {
-        const newCount = prev + 1;
-        setInnerText(compliments[newCount % compliments.length]);
-        return newCount;
-      });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [appState, complimentCount]);
+  }, [count, appState, yesClicked, isMounted]);
 
   const surroundingImages = [
     {
@@ -360,9 +329,8 @@ useEffect(() => {
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
+    </div>
+  );
 
   return (
     <div className="min-h-screen w-full bg-amber-200 flex justify-center items-center relative overflow-hidden p-4">
