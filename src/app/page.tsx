@@ -136,7 +136,7 @@ useEffect(() => {
   );
 
   const noButtonTexts = [
-    "NO"
+    "NO",
   ];
 
   // FIXED: No button movement on hover
@@ -267,42 +267,64 @@ useEffect(() => {
       audioRef2.current.play().catch(() => {});
     }
 
-  }, [count, appState, yesClicked, isMounted]);
+    const compliments = [
+      "YAY! YOU ARE AMAZING! 💕",
+      "I KNEW YOU WOULD SAY YES! 🌟",
+      "BEST DECISION EVER! 💖",
+      "YOU MAKE ME SO HAPPY! 🥰",
+      "MY HEART IS SINGING! 🎶",
+      "I KNEW IT CUTIE I<3U <3 <3< 3",
+    ];
+
+    setInnerText(compliments[complimentCount % compliments.length]);
+    setComplimentCount((prev) => prev + 1);
+
+    // Rotate compliments every 3 seconds
+    const interval = setInterval(() => {
+      setComplimentCount((prev) => {
+        const newCount = prev + 1;
+        setInnerText(compliments[newCount % compliments.length]);
+        return newCount;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [appState, complimentCount]);
 
   const surroundingImages = [
     {
-      src: "/image/12.jpg",
+      src: "/image/12.webp",
       className: "lg:translate-x-[30vw] lg:translate-y-[28vh]",
     },
     {
-      src: "/image/23.jpg",
+      src: "/image/23.webp",
       className: "lg:translate-x-[25vw] lg:translate-y-[3vh]",
     },
     {
-      src: "/image/34.jpg",
+      src: "/image/34.webp",
       className: "lg:-translate-x-[25vw] lg:translate-y-[3vh]",
     },
     {
-      src: "/image/45.jpg",
+      src: "/image/45.webp",
       className: "lg:-translate-x-[30vw] lg:translate-y-[25vh]",
     },
     {
-      src: "/image/56.jpg",
+      src: "/image/56.webp",
       className: "lg:-translate-x-[30vw] lg:-translate-y-[16vh]",
     },
     {
-      src: "/image/67.jpg",
+      src: "/image/67.webp",
       className: "lg:-translate-x-[23vw] lg:-translate-y-[35vh]",
     },
     {
-      src: "/image/78.jpg",
+      src: "/image/78.webp",
       className: "lg:translate-x-[27vw] lg:-translate-y-[25vh]",
     },
   ];
 
   // FIXED: Get current button text based on state and count
   const getNoButtonText = () => {
-    if (appState === "ultimatum") return "I AM SORRY!";
+    if (appState === "ultimatum") return "NO !!";
     if (appState === "celebrating") return "CHANGED MIND?";
 
     // FIXED: Use count to get the correct text from array
@@ -329,8 +351,9 @@ useEffect(() => {
             </div>
           </div>
         </div>
-    </div>
-  );
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full bg-amber-200 flex justify-center items-center relative overflow-hidden p-4">
@@ -390,7 +413,7 @@ useEffect(() => {
             {innerText}
           </h3>
 
-          {/* Buttons Container - SMALLER ON MOBILE */}
+          {/* Buttons Container - SMALLER ON MOBILE  */}
           <div className="flex flex-col lg:flex-row justify-center items-center gap-3 lg:gap-8 w-full max-w-md">
             {/* Yes Button with Gradient Border - SMALLER ON MOBILE */}
             <div className="rotating-gradient h-10 lg:h-12 w-full lg:w-48 flex justify-center items-center rounded-lg cursor-pointer hover:scale-110 hover:duration-100 active:scale-105 transition-transform">
